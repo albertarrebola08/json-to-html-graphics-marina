@@ -37,7 +37,11 @@ const jsonDataPrices = {
         { "type": "text", "content": "plot_groupby_producto_id_catidad_recibida_fecha_emision.html" },
         { "type": "text", "content": "plot_groupby_producto_id_precio_por_unidad_catidad_recibida.html" },
         { "type": "text", "content": "plot_margin.html" },
-        { "type": "text", "content": "\nStart LEAD TIME ANALYZER...\n" },
+        // { "type": "text", "content": "\nStart LEAD TIME ANALYZER...\n" },
+    ],
+}
+const jsonDataTime = {
+    "data":[ 
         { "type": "text", "content": "plot_cov_lead_time.html" },
         { "type": "text", "content": "plot_groupby_proveedor_id_lead_time_fecha_emision.html" },
         { "type": "text", "content": "Attributes with more than 20% absolute value correlation with lead_time attribute:\nalmacen_id            0.331844\nproveedor            -0.301380\nalmacen               0.331844\ncoste_adquisicion     0.295925\ncatidad_solicitada    0.234252\ncatidad_recibida      0.213932\ntmp_id               -0.258927\nlead_time             1.000000\nName: lead_time, dtype: float64" },
@@ -88,5 +92,20 @@ for (const item of jsonDataPrices.data) {
         image.src = item.content;
         image.alt = "Image";
         jsonContentPricesDiv.appendChild(image);
+    }
+}
+
+const jsonContentTimeDiv = document.getElementById('jsonContentTime');
+
+for (const item of jsonDataTime.data) {
+    if (item.type === "text") {
+        const paragraph = document.createElement('li');
+        paragraph.textContent = item.content;
+        jsonContentTimeDiv.appendChild(paragraph);
+    } else if (item.type === "image") {
+        const image = document.createElement('img');
+        image.src = item.content;
+        image.alt = "Image";
+        jsonContentTimeDiv.appendChild(image);
     }
 }
